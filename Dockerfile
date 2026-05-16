@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install \
     pdo \
     pdo_mysql \
+    pdo_pgsql \
     zip \
     mbstring \
     exif \
@@ -29,9 +30,8 @@ RUN composer install \
 
 COPY . .
 
-RUN cp .env.example .env || true
+RUN rm -f .env
 
-RUN php artisan key:generate --force || true
 RUN php artisan config:clear || true
 RUN php artisan cache:clear || true
 RUN php artisan route:clear || true
