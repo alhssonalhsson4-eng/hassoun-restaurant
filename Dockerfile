@@ -1,7 +1,7 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    git unzip zip curl libpq-dev libzip-dev \
+    git unzip zip curl libpq-dev libzip-dev nodejs npm \
     && docker-php-ext-install pdo_pgsql pdo_mysql zip
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -9,10 +9,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /app
 
 COPY composer.json composer.lock ./
-
 RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs --no-scripts
 
+COPY package.json package-lock.json ./
+RUN npm install
+
 COPY . .
+
+RUN npm run build
 
 RUN rm -f .env
 RUN chmod -R 775 storage bootstrap/cache || true
