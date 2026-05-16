@@ -1,0 +1,266 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Tahoma, sans-serif;
+}
+
+.main-navbar {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 193, 7, 0.4);
+    padding: 18px 0;
+    z-index: 999;
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffc107;
+}
+
+.cart-icon-box {
+    position: relative;
+    color: white;
+    font-size: 34px;
+    text-decoration: none;
+}
+
+.cart-icon-box:hover {
+    color: #ffc107;
+}
+
+.cart-icon-box span {
+    position: absolute;
+    top: -10px;
+    right: -12px;
+    background: #ffc107;
+    color: black;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lang-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid #ffc107;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.lang-btn:hover {
+    background: #ffc107;
+    color: black;
+}
+
+.hero-section {
+    min-height: 430px;
+    background:
+        linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.75)),
+        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1400');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid #ffc107;
+}
+
+.hero-title {
+    font-size: 64px;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.hero-subtitle {
+    font-size: 23px;
+    color: #ddd;
+}
+
+.section-title {
+    color: #ffc107;
+    font-size: 35px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.menu-card {
+    background: #111;
+    border: 1px solid #ffc107;
+    border-radius: 18px;
+    overflow: hidden;
+    transition: 0.3s;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(255,193,7,0.2);
+}
+
+.menu-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.menu-content {
+    padding: 20px;
+}
+
+.menu-title {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-description {
+    color: #bbb;
+    min-height: 50px;
+}
+
+.menu-price {
+    color: #ffc107;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.qty-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.qty-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 12px;
+    background: #ffc107;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.qty-btn:hover {
+    background: #ffcd39;
+}
+
+.qty-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.cart-box {
+    background: #111;
+    border: 2px solid #ffc107;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #444;
+    padding: 12px 0;
+}
+
+.form-control,
+.form-select {
+    background: #1c1c1c !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+    min-height: 50px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #ffc107 !important;
+    box-shadow: none !important;
+}
+
+.btn-gold {
+    background: #ffc107;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 12px;
+    min-height: 50px;
+    padding: 12px 25px;
+}
+
+.btn-gold:hover {
+    background: #ffcd39;
+    color: black;
+}
+
+.footer {
+    border-top: 1px solid #333;
+    margin-top: 80px;
+    padding: 30px 0;
+    text-align: center;
+    color: #888;
+    background: #080808;
+}
+
+@media (max-width: 768px) {
+
+    .nav-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .hero-title {
+        font-size: 42px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .section-title {
+        font-size: 28px;
+    }
+}
