@@ -1,8 +1,18 @@
 FROM php:8.2-cli
 
 RUN apt-get update && apt-get install -y \
-    git unzip zip curl libzip-dev libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip mbstring exif pcntl bcmath gd
+    git unzip zip curl \
+    libzip-dev \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    && docker-php-ext-install \
+    pdo \
+    pdo_mysql \
+    zip \
+    mbstring \
+    exif \
+    bcmath
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -10,11 +20,20 @@ WORKDIR /app
 
 COPY composer.json composer.lock ./
 
-RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction \
+    --ignore-platform-reqs \
+    --no-scripts
 
 COPY . .
 
+RUN cp .env.example .env || true
+
+RUN php artisan key:generate --force || true
 RUN php artisan config:clear || true
+RUN php artisan cache:clear || true
 RUN php artisan route:clear || true
 RUN php artisan view:clear || true
 
